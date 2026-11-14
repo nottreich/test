@@ -1,0 +1,539 @@
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Ulang Tahun Sayang</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Nunito:wght@400;600;700&display=swap">
+<style>
+/* Layout: satu halaman panjang bergaya surat cinta. Hero -> ucapan -> foto -> lilin -> harapan. Nav melayang di atas. */
+:root{
+  --bg:#fff3f7;
+  --bg-2:#ffe3ee;
+  --card:#fffafc;
+  --ink:#4b1f35;
+  --ink-soft:#7a4560;
+  --rose:#cc3472;
+  --rose-deep:#a32359;
+  --pink:#ff7fab;
+  --blush:#ffc2d9;
+  --line:#f6cadb;
+  --font-display:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-hand:"Caveat", "Segoe Script", "Bradley Hand", cursive;
+  --font-body:"Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(900px 500px at 8% -5%, #ffd3e3 0, transparent 60%),
+    radial-gradient(800px 500px at 100% 30%, #ffdbe8 0, transparent 60%),
+    var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.75;
+  margin:0;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:0 48px;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+.hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.hearts span{position:absolute;bottom:-50px;color:var(--pink);opacity:var(--o,.25);animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-115vh) rotate(40deg)}}
+main,.nav,footer{position:relative;z-index:1}
+.wrap{max-width:860px;margin:0 auto}
+
+/* nav */
+.nav{
+  position:sticky;top:calc(env(safe-area-inset-top,0px) + 10px);z-index:40;
+  max-width:860px;margin:10px auto 0;
+  background:rgba(255,250,252,.92);backdrop-filter:blur(8px);
+  border:1px solid var(--line);border-radius:999px;
+  display:flex;align-items:center;gap:6px;padding:6px 8px 6px 18px;
+  box-shadow:0 6px 24px rgba(204,52,114,.12);
+}
+.brand{font-family:var(--font-hand);font-size:1.5rem;color:var(--rose);white-space:nowrap;line-height:1}
+.nav-links{display:flex;gap:4px;overflow-x:auto;min-width:0;margin-left:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{white-space:nowrap;text-decoration:none;color:var(--ink);font-weight:700;font-size:.88rem;padding:7px 14px;border-radius:999px}
+.nav-links a:hover{background:var(--bg-2)}
+.nav-links a.hope{background:var(--rose);color:#fff}
+.nav-links a.hope:hover{background:var(--rose-deep)}
+a:focus-visible,button:focus-visible,.candle:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:12px}
+
+/* hero */
+.hero{text-align:center;padding:72px 0 56px}
+.eyebrow{font-family:var(--font-hand);font-size:1.6rem;color:var(--rose);margin:0}
+h1{font-family:var(--font-display);font-style:italic;font-weight:600;font-size:clamp(2.7rem,10vw,5.4rem);line-height:1.02;margin:10px 0 0;text-wrap:balance}
+h1 .name{display:block;font-family:var(--font-hand);font-style:normal;font-weight:700;color:var(--rose);font-size:1.18em;line-height:1.1;margin-top:6px}
+.hero p.sub{max-width:34em;margin:22px auto 0;color:var(--ink-soft);font-size:1.08rem}
+.cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:30px}
+.btn{
+  font:inherit;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  padding:13px 24px;border-radius:999px;border:2px solid var(--rose);background:var(--rose);color:#fff;
+  transition:transform .15s ease, background .15s ease;
+}
+.btn:hover{background:var(--rose-deep);border-color:var(--rose-deep);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--rose-deep)}
+.btn.ghost:hover{background:var(--bg-2);color:var(--rose-deep)}
+
+section{padding:56px 0;scroll-margin-top:84px}
+h2{font-family:var(--font-display);font-style:italic;font-weight:600;font-size:clamp(2rem,6vw,3rem);line-height:1.1;margin:0 0 6px;text-wrap:balance}
+.lead{color:var(--ink-soft);margin:0 0 28px}
+
+/* letter */
+.letter{
+  background:var(--card);border:1px solid var(--line);border-radius:28px;
+  padding:clamp(24px,5vw,52px);box-shadow:0 18px 50px rgba(204,52,114,.1);
+}
+.letter p{margin:0 0 1.15em;max-width:65ch}
+.letter p:first-of-type::first-letter{font-family:var(--font-display);font-style:italic;font-weight:600;font-size:3.6rem;line-height:.8;float:left;padding:6px 10px 0 0;color:var(--rose)}
+.sign{font-family:var(--font-hand);font-size:2rem;color:var(--rose);line-height:1.2;margin-top:18px}
+
+/* gallery */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:26px 22px}
+figure{margin:0}
+.polaroid{background:#fff;padding:12px 12px 10px;border-radius:6px;box-shadow:0 10px 28px rgba(122,40,80,.16);transform:rotate(var(--r,0deg));transition:transform .2s ease}
+.polaroid:hover{transform:rotate(0deg) translateY(-4px)}
+.slot{
+  display:block;width:100%;aspect-ratio:4/5;border:0;padding:0;cursor:pointer;overflow:hidden;border-radius:3px;position:relative;
+  background:linear-gradient(160deg,#ffd7e6,#ffb3cf);color:var(--rose-deep);font:inherit;
+}
+.slot img{width:100%;height:100%;object-fit:cover;display:block}
+.slot .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-weight:700;font-size:.9rem}
+.slot .ph svg{width:44px;height:44px}
+figcaption{font-family:var(--font-hand);font-size:1.35rem;line-height:1.2;text-align:center;padding:10px 4px 2px;color:var(--ink)}
+.note{margin-top:22px;color:var(--ink-soft);font-size:.92rem;text-align:center}
+
+/* cake */
+.cake-card{
+  background:linear-gradient(180deg,#fffafc,#ffe9f1);border:1px solid var(--line);border-radius:28px;
+  padding:clamp(20px,4vw,40px);text-align:center;box-shadow:0 18px 50px rgba(204,52,114,.1)
+}
+.cake{width:min(360px,100%);height:auto;display:block;margin:0 auto}
+.candle{cursor:pointer}
+.fl{transform-box:fill-box;transform-origin:50% 100%;transform:rotate(calc(var(--wind,0) * -16deg)) scaleY(calc(1 - var(--wind,0) * .45));transition:opacity .3s ease}
+.fk{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1s ease-in-out infinite alternate}
+.candle:nth-child(odd) .fk{animation-duration:.8s}
+@keyframes flick{from{transform:scale(1,1) rotate(-3deg)}to{transform:scale(.92,1.08) rotate(3deg)}}
+.candle.out .fl{opacity:0}
+.smoke{opacity:0;fill:none;stroke:#a67a90;stroke-width:2;stroke-linecap:round}
+.candle.out .smoke{animation:smoke 1.8s ease-out}
+@keyframes smoke{0%{opacity:.7;transform:translateY(0)}100%{opacity:0;transform:translateY(-22px)}}
+.status{min-height:3.4em;margin:18px auto 4px;max-width:30em;font-weight:600}
+.controls{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:10px}
+.mic-note{color:var(--ink-soft);font-size:.92rem;margin:14px auto 0;max-width:34em;min-height:1.6em}
+.wish{
+  margin:24px auto 0;max-width:36em;padding:22px 24px;border-radius:22px;background:#fff;border:2px dashed var(--pink)
+}
+.wish h3{font-family:var(--font-hand);font-size:2rem;color:var(--rose);margin:0 0 4px;line-height:1.2}
+.wish p{margin:0}
+#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+
+/* hopes */
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.hope-tab{
+  font:inherit;font-weight:700;cursor:pointer;padding:10px 20px;border-radius:999px;
+  border:2px solid var(--line);background:var(--card);color:var(--ink);transition:all .15s ease
+}
+.hope-tab:hover{border-color:var(--pink)}
+.hope-tab[aria-selected="true"]{background:var(--rose);border-color:var(--rose);color:#fff}
+.hope-panel{
+  background:var(--card);border:1px solid var(--line);border-radius:28px;padding:clamp(22px,4vw,44px);
+  box-shadow:0 18px 50px rgba(204,52,114,.1)
+}
+.hope-panel h3{font-family:var(--font-display);font-style:italic;font-weight:600;font-size:clamp(1.7rem,5vw,2.4rem);line-height:1.15;margin:0 0 14px;color:var(--rose-deep)}
+.hope-panel p{margin:0 0 1em;max-width:62ch}
+.hope-panel p:last-child{margin-bottom:0}
+
+footer{text-align:center;padding:36px 0 8px;color:var(--ink-soft)}
+footer .big{font-family:var(--font-hand);font-size:2.2rem;color:var(--rose);line-height:1.2}
+
+@media (max-width:520px){
+  .nav{padding-left:14px}
+  .brand{font-size:1.25rem}
+  .hero{padding-top:48px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hearts{display:none}
+  .fk,.candle.out .smoke{animation:none}
+  .polaroid,.btn{transition:none}
+}
+</style>
+
+<div class="hearts" id="hearts" aria-hidden="true"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<nav class="nav" aria-label="Menu">
+  <span class="brand">Happy Birthday</span>
+  <div class="nav-links">
+    <a href="#ucapan">Ucapan</a>
+    <a href="#kenangan">Kenangan</a>
+    <a href="#lilin">Tiup Lilin</a>
+    <a class="hope" href="#harapan">My Hope for You</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow">untuk perempuan yang paling aku sayang</p>
+    <h1>Selamat Ulang Tahun <span class="name js-name">Sayang</span></h1>
+    <p class="sub">Aku menyiapkan halaman kecil ini hanya untukmu. Isinya surat panjang, kenangan kita, satu kue yang menunggu ditiup, dan semua harapan yang aku simpan untukmu.</p>
+    <div class="cta">
+      <a class="btn" href="#ucapan">Baca ucapanku</a>
+      <a class="btn ghost" href="#lilin">Langsung tiup lilin</a>
+    </div>
+  </header>
+
+  <section id="ucapan">
+    <h2>Surat kecil untukmu</h2>
+    <p class="lead">Dibaca pelan-pelan ya, sayang.</p>
+    <article class="letter">
+      <p>Hai, <span class="js-name">Sayang</span>. Hari ini adalah hari yang paling aku tunggu-tunggu, hari ketika dunia mendapatkan salah satu orang terbaiknya. Aku sudah menyiapkan kata-kata ini jauh-jauh hari, tapi tetap saja bingung harus mulai dari mana, karena terlalu banyak hal yang ingin aku ceritakan padamu.</p>
+      <p>Terima kasih sudah lahir ke dunia ini. Terima kasih sudah tumbuh menjadi kamu yang sekarang: yang hangat, yang sabar, dan yang selalu punya cara untuk membuat hari-hariku terasa lebih ringan. Aku tidak tahu kebaikan apa yang pernah aku lakukan sampai pantas dipertemukan denganmu, tapi aku bersyukur setiap hari.</p>
+      <p>Sejak ada kamu, hal-hal kecil jadi punya arti. Pesan singkat di pagi hari, tawa yang pecah tanpa alasan, makan malam sederhana yang rasanya jadi istimewa, dan diam yang tidak pernah terasa canggung. Kamu mengajariku bahwa bahagia itu tidak harus megah. Cukup ada kamu di sampingku.</p>
+      <p>Aku tahu kamu tidak selalu bercerita kalau sedang lelah. Tapi ingat ya, kamu tidak harus kuat sendirian. Kalau dunia terasa terlalu berat, kamu boleh bersandar padaku. Aku mungkin tidak selalu punya jawaban yang tepat, tapi aku akan selalu ada untuk mendengarkan, memelukmu, dan menemanimu sampai semuanya terasa lebih baik.</p>
+      <p>Terima kasih untuk semua kesabaranmu menghadapi aku, untuk maaf yang kamu berikan, untuk semangat yang kamu bagikan, dan untuk cinta yang kamu rawat dengan begitu tulus. Kamu bukan hanya pacarku. Kamu adalah rumah tempat aku ingin pulang.</p>
+      <p>Di usia yang baru ini, aku ingin kamu tahu bahwa kamu sudah cukup, persis seperti dirimu sekarang. Kamu cantik, bukan hanya karena wajahmu, tapi karena hatimu. Kamu berharga, bukan karena apa yang sudah kamu capai, tapi karena kamu adalah kamu.</p>
+      <p>Semoga tahun ini membawa lebih banyak tawa daripada air mata, lebih banyak pelukan daripada kekhawatiran, dan lebih banyak alasan untuk tersenyum. Semoga semua doa yang diam-diam kamu simpan satu per satu menemukan jalannya. Dan semoga aku boleh jadi salah satu orang yang menemanimu menjemput semuanya.</p>
+      <p>Selamat ulang tahun, sayang. Aku mencintaimu hari ini, besok, dan di semua hari setelahnya.</p>
+      <div class="sign">Dengan seluruh cintaku,<br>pacarmu</div>
+    </article>
+  </section>
+
+  <section id="kenangan">
+    <h2>Kenangan kita</h2>
+    <p class="lead">Potongan-potongan hari yang paling aku sayangi.</p>
+    <div class="grid" id="grid">
+      <figure class="polaroid" style="--r:-2deg"><button class="slot" type="button" aria-label="Ganti foto 1"><img alt="Foto kenangan 1" hidden><span class="ph"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 2.6 5 6 5c2 0 3.3 1.1 4 2.3C10.700 6.100 12 5 14 5c3.400 0 5 3.600 3.600 6.800C19.500 16.400 12 21 12 21z" transform="translate(0 0)"/></svg>Tambah foto</span></button><figcaption>Awal cerita kita</figcaption></figure>
+      <figure class="polaroid" style="--r:1.5deg"><button class="slot" type="button" aria-label="Ganti foto 2"><img alt="Foto kenangan 2" hidden><span class="ph"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 2.6 5 6 5c2 0 3.3 1.1 4 2.3C10.700 6.100 12 5 14 5c3.400 0 5 3.600 3.600 6.800C19.500 16.400 12 21 12 21z"/></svg>Tambah foto</span></button><figcaption>Senyum favoritku</figcaption></figure>
+      <figure class="polaroid" style="--r:-1deg"><button class="slot" type="button" aria-label="Ganti foto 3"><img alt="Foto kenangan 3" hidden><span class="ph"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 2.6 5 6 5c2 0 3.3 1.1 4 2.3C10.700 6.100 12 5 14 5c3.400 0 5 3.600 3.600 6.800C19.500 16.400 12 21 12 21z"/></svg>Tambah foto</span></button><figcaption>Hari yang tak akan kulupa</figcaption></figure>
+      <figure class="polaroid" style="--r:2deg"><button class="slot" type="button" aria-label="Ganti foto 4"><img alt="Foto kenangan 4" hidden><span class="ph"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 2.6 5 6 5c2 0 3.3 1.1 4 2.3C10.700 6.100 12 5 14 5c3.400 0 5 3.600 3.600 6.800C19.500 16.400 12 21 12 21z"/></svg>Tambah foto</span></button><figcaption>Kamu dan tawamu</figcaption></figure>
+      <figure class="polaroid" style="--r:-2.5deg"><button class="slot" type="button" aria-label="Ganti foto 5"><img alt="Foto kenangan 5" hidden><span class="ph"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 2.6 5 6 5c2 0 3.3 1.1 4 2.3C10.700 6.100 12 5 14 5c3.400 0 5 3.600 3.600 6.800C19.500 16.400 12 21 12 21z"/></svg>Tambah foto</span></button><figcaption>Petualangan kecil kita</figcaption></figure>
+      <figure class="polaroid" style="--r:1deg"><button class="slot" type="button" aria-label="Ganti foto 6"><img alt="Foto kenangan 6" hidden><span class="ph"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 2.6 5 6 5c2 0 3.3 1.1 4 2.3C10.700 6.100 12 5 14 5c3.400 0 5 3.600 3.600 6.800C19.500 16.400 12 21 12 21z"/></svg>Tambah foto</span></button><figcaption>Makan bareng, bahagia bareng</figcaption></figure>
+      <figure class="polaroid" style="--r:-1.5deg"><button class="slot" type="button" aria-label="Ganti foto 7"><img alt="Foto kenangan 7" hidden><span class="ph"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 2.6 5 6 5c2 0 3.3 1.1 4 2.3C10.700 6.100 12 5 14 5c3.400 0 5 3.600 3.600 6.800C19.500 16.400 12 21 12 21z"/></svg>Tambah foto</span></button><figcaption>Kamu yang paling cantik</figcaption></figure>
+      <figure class="polaroid" style="--r:2.5deg"><button class="slot" type="button" aria-label="Ganti foto 8"><img alt="Foto kenangan 8" hidden><span class="ph"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 2.6 5 6 5c2 0 3.3 1.1 4 2.3C10.700 6.100 12 5 14 5c3.400 0 5 3.600 3.600 6.800C19.500 16.400 12 21 12 21z"/></svg>Tambah foto</span></button><figcaption>Kita berdua</figcaption></figure>
+      <figure class="polaroid" style="--r:-1deg"><button class="slot" type="button" aria-label="Ganti foto 9"><img alt="Foto kenangan 9" hidden><span class="ph"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 2.6 5 6 5c2 0 3.3 1.1 4 2.3C10.700 6.100 12 5 14 5c3.400 0 5 3.600 3.600 6.800C19.500 16.400 12 21 12 21z"/></svg>Tambah foto</span></button><figcaption>Masih banyak cerita lagi</figcaption></figure>
+    </div>
+    <p class="note">Pencet kotak foto untuk memasang atau mengganti gambarnya.</p>
+    <input type="file" id="photoInput" accept="image/*" hidden>
+  </section>
+
+  <section id="lilin">
+    <h2>Saatnya tiup lilin</h2>
+    <p class="lead">Pejamkan mata, buat satu permintaan, lalu tiup.</p>
+    <div class="cake-card">
+      <svg class="cake" id="cake" viewBox="0 0 320 290" role="group" aria-label="Kue ulang tahun dengan lima lilin">
+        <defs>
+          <linearGradient id="fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe066"/><stop offset="1" stop-color="#ff8a3d"/></linearGradient>
+          <radialGradient id="glow"><stop offset="0" stop-color="#ffd54d" stop-opacity=".55"/><stop offset="1" stop-color="#ffd54d" stop-opacity="0"/></radialGradient>
+        </defs>
+        <ellipse cx="160" cy="268" rx="136" ry="15" fill="#ffe3ee" stroke="#f6cadb" stroke-width="2"/>
+        <rect x="50" y="176" width="220" height="88" rx="14" fill="#ff9bbd"/>
+        <path d="M50,176 L270,176 L270,186 q-10,30 -20,0 q-10,30 -20,0 q-10,30 -20,0 q-10,30 -20,0 q-10,30 -20,0 q-10,30 -20,0 q-10,30 -20,0 q-10,30 -20,0 q-10,30 -20,0 q-10,30 -20,0 q-10,30 -20,0 Z" fill="#fff2f7"/>
+        <g fill="#fff"><circle cx="78" cy="226" r="5"/><circle cx="118" cy="236" r="5"/><circle cx="160" cy="226" r="5"/><circle cx="202" cy="236" r="5"/><circle cx="242" cy="226" r="5"/></g>
+        <rect x="85" y="118" width="150" height="62" rx="12" fill="#ffb8d0"/>
+        <path d="M85,118 L235,118 L235,126 q-7.5,26 -15,0 q-7.5,26 -15,0 q-7.5,26 -15,0 q-7.5,26 -15,0 q-7.5,26 -15,0 q-7.5,26 -15,0 q-7.5,26 -15,0 q-7.5,26 -15,0 q-7.5,26 -15,0 q-7.5,26 -15,0 Z" fill="#fff2f7"/>
+        <path d="M160,170 C140,156 148,144 160,152 C172,144 180,156 160,170Z" fill="#fff"/>
+
+        <g class="candle" tabindex="0" role="button" aria-label="Lilin 1, pencet untuk meniup">
+          <rect x="100" y="88" width="10" height="34" rx="3" fill="#fff"/><rect x="100" y="98" width="10" height="5" fill="#ff7fab"/><rect x="100" y="110" width="10" height="5" fill="#ff7fab"/><rect x="104" y="80" width="2" height="8" fill="#6b3a52"/>
+          <path class="smoke" d="M105,76 q-6,-10 0,-18 q6,-8 0,-18"/>
+          <g transform="translate(105,80)"><g class="fl"><g class="fk"><circle cx="0" cy="-12" r="17" fill="url(#glow)"/><path d="M0,-26 C9,-14 10,-4 0,2 C-10,-4 -9,-14 0,-26Z" fill="url(#fg)"/><path d="M0,-12 C4,-8 4,-3 0,0 C-4,-3 -4,-8 0,-12Z" fill="#fff6c8"/></g></g></g>
+          <rect x="90" y="46" width="30" height="78" fill="#000" fill-opacity="0"/>
+        </g>
+        <g class="candle" tabindex="0" role="button" aria-label="Lilin 2, pencet untuk meniup">
+          <rect x="127.500" y="88" width="10" height="34" rx="3" fill="#fff"/><rect x="127.500" y="98" width="10" height="5" fill="#ff7fab"/><rect x="127.500" y="110" width="10" height="5" fill="#ff7fab"/><rect x="131.500" y="80" width="2" height="8" fill="#6b3a52"/>
+          <path class="smoke" d="M132.500,76 q-6,-10 0,-18 q6,-8 0,-18"/>
+          <g transform="translate(132.500,80)"><g class="fl"><g class="fk"><circle cx="0" cy="-12" r="17" fill="url(#glow)"/><path d="M0,-26 C9,-14 10,-4 0,2 C-10,-4 -9,-14 0,-26Z" fill="url(#fg)"/><path d="M0,-12 C4,-8 4,-3 0,0 C-4,-3 -4,-8 0,-12Z" fill="#fff6c8"/></g></g></g>
+          <rect x="117.500" y="46" width="30" height="78" fill="#000" fill-opacity="0"/>
+        </g>
+        <g class="candle" tabindex="0" role="button" aria-label="Lilin 3, pencet untuk meniup">
+          <rect x="155" y="88" width="10" height="34" rx="3" fill="#fff"/><rect x="155" y="98" width="10" height="5" fill="#ff7fab"/><rect x="155" y="110" width="10" height="5" fill="#ff7fab"/><rect x="159" y="80" width="2" height="8" fill="#6b3a52"/>
+          <path class="smoke" d="M160,76 q-6,-10 0,-18 q6,-8 0,-18"/>
+          <g transform="translate(160,80)"><g class="fl"><g class="fk"><circle cx="0" cy="-12" r="17" fill="url(#glow)"/><path d="M0,-26 C9,-14 10,-4 0,2 C-10,-4 -9,-14 0,-26Z" fill="url(#fg)"/><path d="M0,-12 C4,-8 4,-3 0,0 C-4,-3 -4,-8 0,-12Z" fill="#fff6c8"/></g></g></g>
+          <rect x="145" y="46" width="30" height="78" fill="#000" fill-opacity="0"/>
+        </g>
+        <g class="candle" tabindex="0" role="button" aria-label="Lilin 4, pencet untuk meniup">
+          <rect x="182.500" y="88" width="10" height="34" rx="3" fill="#fff"/><rect x="182.500" y="98" width="10" height="5" fill="#ff7fab"/><rect x="182.500" y="110" width="10" height="5" fill="#ff7fab"/><rect x="186.500" y="80" width="2" height="8" fill="#6b3a52"/>
+          <path class="smoke" d="M187.500,76 q-6,-10 0,-18 q6,-8 0,-18"/>
+          <g transform="translate(187.500,80)"><g class="fl"><g class="fk"><circle cx="0" cy="-12" r="17" fill="url(#glow)"/><path d="M0,-26 C9,-14 10,-4 0,2 C-10,-4 -9,-14 0,-26Z" fill="url(#fg)"/><path d="M0,-12 C4,-8 4,-3 0,0 C-4,-3 -4,-8 0,-12Z" fill="#fff6c8"/></g></g></g>
+          <rect x="172.500" y="46" width="30" height="78" fill="#000" fill-opacity="0"/>
+        </g>
+        <g class="candle" tabindex="0" role="button" aria-label="Lilin 5, pencet untuk meniup">
+          <rect x="210" y="88" width="10" height="34" rx="3" fill="#fff"/><rect x="210" y="98" width="10" height="5" fill="#ff7fab"/><rect x="210" y="110" width="10" height="5" fill="#ff7fab"/><rect x="214" y="80" width="2" height="8" fill="#6b3a52"/>
+          <path class="smoke" d="M215,76 q-6,-10 0,-18 q6,-8 0,-18"/>
+          <g transform="translate(215,80)"><g class="fl"><g class="fk"><circle cx="0" cy="-12" r="17" fill="url(#glow)"/><path d="M0,-26 C9,-14 10,-4 0,2 C-10,-4 -9,-14 0,-26Z" fill="url(#fg)"/><path d="M0,-12 C4,-8 4,-3 0,0 C-4,-3 -4,-8 0,-12Z" fill="#fff6c8"/></g></g></g>
+          <rect x="200" y="46" width="30" height="78" fill="#000" fill-opacity="0"/>
+        </g>
+      </svg>
+
+      <p class="status" id="status" aria-live="polite">Lilinnya masih menyala. Buat satu permintaan dulu ya, lalu tiup pelan-pelan.</p>
+      <div class="controls">
+        <button class="btn" type="button" id="micBtn">Tiup pakai mic</button>
+        <button class="btn ghost" type="button" id="blowBtn">Tiup lilin (pencet)</button>
+        <button class="btn ghost" type="button" id="relightBtn" hidden>Nyalakan lagi</button>
+      </div>
+      <p class="mic-note" id="micNote">Izinkan mic, lalu tiup ke arah mic ponselmu. Kalau mic bermasalah, pencet tombol atau pencet lilinnya langsung.</p>
+
+      <div class="wish" id="wish" hidden>
+        <h3>Permintaanmu sudah terkirim ke langit</h3>
+        <p>Semoga semua yang kamu pinta tadi terkabul, satu per satu, dan aku mau jadi orang pertama yang memelukmu saat itu terjadi. Selamat ulang tahun, sayang.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="harapan">
+    <h2>My Hope for You</h2>
+    <p class="lead">Pilih satu, ini harapan yang aku bisikkan untukmu.</p>
+    <div class="tabs" role="tablist" aria-label="Harapan untukmu">
+      <button class="hope-tab" role="tab" id="t0" aria-controls="p0" aria-selected="true" type="button">Sehat selalu</button>
+      <button class="hope-tab" role="tab" id="t1" aria-controls="p1" aria-selected="false" tabindex="-1" type="button">Bahagia</button>
+      <button class="hope-tab" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1" type="button">Mimpimu</button>
+      <button class="hope-tab" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1" type="button">Dicintai</button>
+      <button class="hope-tab" role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1" type="button">Jadi dirimu</button>
+      <button class="hope-tab" role="tab" id="t5" aria-controls="p5" aria-selected="false" tabindex="-1" type="button">Kita</button>
+    </div>
+
+    <div class="hope-panel" role="tabpanel" id="p0" aria-labelledby="t0">
+      <h3>Semoga kamu selalu sehat</h3>
+      <p>Aku berharap kamu selalu sehat, sayang. Tubuhmu sudah bekerja keras untuk membawamu sejauh ini, jadi semoga kamu selalu punya waktu untuk istirahat, makan enak, dan tidur nyenyak tanpa memikirkan hal-hal yang membuatmu cemas.</p>
+      <p>Kalau suatu hari kamu sakit, aku mau jadi orang pertama yang tahu. Biar aku bisa membawakan makanan, menemanimu, dan memastikan kamu cepat pulih. Tapi semoga itu jarang sekali terjadi.</p>
+    </div>
+    <div class="hope-panel" role="tabpanel" id="p1" aria-labelledby="t1" hidden>
+      <h3>Semoga kamu bahagia</h3>
+      <p>Semoga kamu bahagia dengan cara yang paling sederhana: secangkir minuman favorit di sore hari, lagu yang pas di telinga, tawa bersama orang-orang yang kamu sayang. Semoga kamu tidak perlu menunggu momen besar untuk merasa cukup.</p>
+      <p>Dan kalau suatu hari bahagia terasa jauh, semoga kamu ingat bahwa aku selalu bisa jadi satu alasan kecil untukmu tersenyum.</p>
+    </div>
+    <div class="hope-panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+      <h3>Semoga mimpimu jadi nyata</h3>
+      <p>Semoga semua mimpi yang pernah kamu ceritakan, juga yang masih kamu simpan sendiri, satu per satu menjadi kenyataan. Kamu punya kemampuan yang jauh lebih besar dari yang kamu kira.</p>
+      <p>Kalau jalannya terasa berat atau kamu mulai ragu, aku akan jadi orang pertama yang bertepuk tangan untuk setiap langkah kecilmu. Aku percaya padamu, sepenuhnya.</p>
+    </div>
+    <div class="hope-panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+      <h3>Semoga kamu selalu dicintai</h3>
+      <p>Semoga kamu selalu dicintai dengan cara yang membuatmu merasa aman. Dihargai, didengarkan, dan dimengerti, bukan hanya di hari ulang tahun, tapi juga di setiap hari biasa.</p>
+      <p>Dan semoga aku bisa terus belajar menjadi pasangan yang layak untukmu: yang sabar, yang jujur, dan yang tidak pernah berhenti memilihmu.</p>
+    </div>
+    <div class="hope-panel" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
+      <h3>Semoga kamu tetap jadi dirimu</h3>
+      <p>Semoga kamu tetap menjadi dirimu sendiri, dengan caramu tertawa, caramu peduli, dan semua keunikan yang membuatku jatuh cinta. Jangan berubah hanya supaya diterima.</p>
+      <p>Semoga kamu makin yakin bahwa kamu berharga, dan makin lembut pada dirimu sendiri di hari-hari yang tidak berjalan sesuai rencana.</p>
+    </div>
+    <div class="hope-panel" role="tabpanel" id="p5" aria-labelledby="t5" hidden>
+      <h3>Semoga kita sampai nanti</h3>
+      <p>Semoga kita punya banyak sekali hari yang akan datang. Banyak tempat yang belum kita kunjungi, banyak makanan yang belum kita coba, dan banyak cerita yang belum kita tulis bersama.</p>
+      <p>Apa pun yang terjadi nanti, semoga kita selalu saling menggenggam. Aku ingin tumbuh bersamamu, hari demi hari.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="big">I love you, <span class="js-name">Sayang</span></div>
+  <div>Dibuat dengan sepenuh hati, hanya untukmu.</div>
+</footer>
+
+<script>
+(function(){
+  var CONFIG = { name: "Sayang" };
+  var $ = function(s){ return document.querySelector(s); };
+  var $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  $$('.js-name').forEach(function(e){ e.textContent = CONFIG.name; });
+
+  /* hati melayang */
+  if(!reduce){
+    var bg = $('#hearts');
+    for(var i=0;i<16;i++){
+      var s = document.createElement('span');
+      s.textContent = '♥';
+      s.style.left = (Math.random()*100)+'%';
+      s.style.fontSize = (12+Math.random()*22)+'px';
+      s.style.animationDuration = (13+Math.random()*14)+'s';
+      s.style.animationDelay = (-Math.random()*22)+'s';
+      s.style.setProperty('--o', (0.15+Math.random()*0.25).toFixed(2));
+      bg.appendChild(s);
+    }
+  }
+
+  /* tab harapan */
+  var tabs = $$('.hope-tab'), panels = $$('.hope-panel');
+  function selectTab(i){
+    tabs.forEach(function(t,j){ t.setAttribute('aria-selected', j===i ? 'true':'false'); t.tabIndex = j===i ? 0 : -1; });
+    panels.forEach(function(p,j){ p.hidden = j!==i; });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click', function(){ selectTab(i); });
+    t.addEventListener('keydown', function(e){
+      if(e.key==='ArrowRight' || e.key==='ArrowLeft'){
+        var n = (i + (e.key==='ArrowRight'?1:-1) + tabs.length) % tabs.length;
+        selectTab(n); tabs[n].focus(); e.preventDefault();
+      }
+    });
+  });
+
+  /* foto */
+  var slots = $$('.slot'), input = $('#photoInput'), current = -1;
+  function setPhoto(b, src){
+    var img = b.querySelector('img');
+    img.src = src; img.hidden = false;
+    b.querySelector('.ph').hidden = true;
+  }
+  slots.forEach(function(b,i){
+    try{ var d = localStorage.getItem('bd-photo-'+i); if(d) setPhoto(b,d); }catch(e){}
+    b.addEventListener('click', function(){ current = i; input.click(); });
+  });
+  input.addEventListener('change', function(){
+    var f = input.files && input.files[0];
+    if(!f || current < 0) return;
+    var url = URL.createObjectURL(f), im = new Image(), idx = current;
+    im.onload = function(){
+      var max = 900, sc = Math.min(1, max/Math.max(im.width, im.height));
+      var c = document.createElement('canvas');
+      c.width = Math.round(im.width*sc); c.height = Math.round(im.height*sc);
+      c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+      var data = c.toDataURL('image/jpeg', .82);
+      URL.revokeObjectURL(url);
+      setPhoto(slots[idx], data);
+      try{ localStorage.setItem('bd-photo-'+idx, data); }catch(e){}
+      input.value = '';
+    };
+    im.onerror = function(){ URL.revokeObjectURL(url); };
+    im.src = url;
+  });
+
+  /* lilin */
+  var cake = $('#cake'), status = $('#status'), micBtn = $('#micBtn'), blowBtn = $('#blowBtn'),
+      relightBtn = $('#relightBtn'), micNote = $('#micNote'), wish = $('#wish');
+  var candles = $$('.candle'), done = false, mic = null;
+
+  function lit(){ return candles.filter(function(c){ return !c.classList.contains('out'); }); }
+  function setWind(v){ cake.style.setProperty('--wind', v.toFixed(3)); }
+  function extinguish(c){
+    if(c.classList.contains('out')) return;
+    c.classList.add('out');
+    c.setAttribute('aria-label', c.getAttribute('aria-label').replace('pencet untuk meniup','sudah padam'));
+    var n = lit().length;
+    if(n === 0) celebrate();
+    else status.textContent = 'Tinggal ' + n + ' lilin lagi. Teruskan, sayang.';
+  }
+  function blowAll(){
+    lit().forEach(function(c,i){ setTimeout(function(){ extinguish(c); }, i*150); });
+  }
+  function celebrate(){
+    if(done) return;
+    done = true;
+    setWind(0);
+    status.textContent = 'Semua lilin sudah padam. Selamat ulang tahun, ' + CONFIG.name + '!';
+    wish.hidden = false;
+    relightBtn.hidden = false;
+    confetti();
+    stopMic();
+  }
+  function relight(){
+    candles.forEach(function(c,i){
+      c.classList.remove('out');
+      c.setAttribute('aria-label', 'Lilin ' + (i+1) + ', pencet untuk meniup');
+    });
+    done = false; wish.hidden = true; relightBtn.hidden = true;
+    status.textContent = 'Lilinnya sudah menyala lagi. Buat satu permintaan baru ya.';
+  }
+  candles.forEach(function(c){
+    c.addEventListener('click', function(){ extinguish(c); });
+    c.addEventListener('keydown', function(e){ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); extinguish(c); } });
+  });
+  blowBtn.addEventListener('click', blowAll);
+  relightBtn.addEventListener('click', relight);
+
+  /* mic */
+  function micFail(){
+    micNote.textContent = 'Mic belum bisa dipakai di sini. Tenang, kamu bisa pencet tombol "Tiup lilin" atau pencet lilinnya langsung.';
+    micBtn.textContent = 'Tiup pakai mic';
+  }
+  async function startMic(){
+    if(done) relight();
+    if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){ micFail(); return; }
+    var stream;
+    try{
+      stream = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false, noiseSuppression:false, autoGainControl:false}});
+    }catch(e){ micFail(); return; }
+    try{
+      var AC = window.AudioContext || window.webkitAudioContext;
+      var ctx = new AC();
+      var src = ctx.createMediaStreamSource(stream);
+      var an = ctx.createAnalyser(); an.fftSize = 1024; src.connect(an);
+      mic = { stream:stream, ctx:ctx, an:an, buf:new Float32Array(an.fftSize), base:0, blow:0, last:0, start:performance.now(), raf:0 };
+    }catch(e){
+      stream.getTracks().forEach(function(t){ t.stop(); });
+      micFail(); return;
+    }
+    micBtn.textContent = 'Matikan mic';
+    micNote.textContent = 'Mic aktif. Diam sebentar supaya aku mengenali suara sekitarmu, lalu tiup kuat ke arah mic.';
+    mic.raf = requestAnimationFrame(loop);
+  }
+  function loop(t){
+    if(!mic) return;
+    var m = mic;
+    m.an.getFloatTimeDomainData(m.buf);
+    var sum = 0, i;
+    for(i=0;i<m.buf.length;i++) sum += m.buf[i]*m.buf[i];
+    var rms = Math.sqrt(sum/m.buf.length);
+    var dt = m.last ? Math.min(100, t - m.last) : 0;
+    m.last = t;
+    if(t - m.start < 700){
+      m.base = Math.max(m.base, rms);
+    } else {
+      if(m.ready !== true){ m.ready = true; micNote.textContent = 'Siap. Tiup sekarang!'; }
+      var thr = Math.max(0.09, m.base*4);
+      if(rms > thr) m.blow += dt; else m.blow = Math.max(0, m.blow - dt*1.5);
+      setWind(Math.min(1, m.blow/350));
+      if(m.blow >= 350){ blowAll(); stopMic(); return; }
+    }
+    m.raf = requestAnimationFrame(loop);
+  }
+  function stopMic(){
+    if(!mic) return;
+    cancelAnimationFrame(mic.raf);
+    try{ mic.stream.getTracks().forEach(function(t){ t.stop(); }); }catch(e){}
+    try{ mic.ctx.close(); }catch(e){}
+    mic = null;
+    setWind(0);
+    micBtn.textContent = 'Tiup pakai mic';
+    if(!done) micNote.textContent = 'Mic dimatikan. Kamu bisa menyalakannya lagi atau pencet tombol.';
+  }
+  micBtn.addEventListener('click', function(){ if(mic) stopMic(); else startMic(); });
+
+  /* confetti */
+  function confetti(){
+    if(reduce) return;
+    var c = $('#confetti'), x = c.getContext('2d');
+    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    c.width = innerWidth*dpr; c.height = innerHeight*dpr;
+    x.scale(dpr,dpr);
+    var cols = ['#ff7fab','#ffc2d9','#ffffff','#ffd84d','#cc3472','#ffa3c4'];
+    var P = [], n;
+    for(n=0;n<140;n++){
+      P.push({
+        x: innerWidth/2 + (Math.random()-.5)*innerWidth*.3, y: innerHeight*.55,
+        vx:(Math.random()-.5)*14, vy:-8-Math.random()*12, r:Math.random()*6.28, vr:(Math.random()-.5)*.3,
+        s:6+Math.random()*8, c:cols[(Math.random()*cols.length)|0], h:Math.random()<.35
+      });
+    }
+    var f = 0;
+    (function step(){
+      x.clearRect(0,0,innerWidth,innerHeight);
+      P.forEach(function(p){
+        p.vy += .28; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.r += p.vr;
+        x.save(); x.translate(p.x,p.y); x.rotate(p.r); x.fillStyle = p.c;
+        if(p.h){ x.font = (p.s*2)+'px serif'; x.fillText('♥', -p.s, p.s); }
+        else x.fillRect(-p.s/2, -p.s/4, p.s, p.s/2);
+        x.restore();
+      });
+      if(++f < 240) requestAnimationFrame(step); else x.clearRect(0,0,innerWidth,innerHeight);
+    })();
+  }
+})();
+</script>
